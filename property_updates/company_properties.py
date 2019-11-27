@@ -3,8 +3,7 @@ from config import Config
 
 
 def request_all_properties():
-    params = {'hapikey': Config.HAPIKEY_SAND}
-    return requests.get(Config.COMPANY_PROPS_URL, params=params).json()
+    return requests.get(Config.COMPANY_PROPS_URL, params=Config.HAPIKEY_SAND).json()
 
 
 def parse_properties(data, group):
@@ -20,8 +19,7 @@ def parse_properties(data, group):
 
 
 def create_property(property):
-    params = {'hapikey': Config.HAPIKEY}
-    return requests.post(Config.COMPANY_PROPS_URL, json=property, params=params)
+    return requests.post(Config.COMPANY_PROPS_URL, json=property, params=Config.HAUTH_PROD)
 
 
 def create_all_properties(properties):
@@ -34,6 +32,5 @@ if __name__ == "__main__":
     data = request_all_properties()
     group = 'data_infrastructure'
     properties = parse_properties(data, group)
-    #print(properties[0])
     create_all_properties(properties)
 
