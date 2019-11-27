@@ -11,3 +11,4 @@ class Config(object):
     HAUTH = {'hapikey': HAPIKEY_SAND}
 
     FLOW_BASE_URL = "https://api.hubapi.com/automation/v3/workflows/"
+    COMPANY_PROPS_URL = "https://api.hubapi.com/properties/v1/companies/properties/"
