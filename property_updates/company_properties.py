@@ -33,7 +33,7 @@ def create_all_properties(properties):
         print(response)
 
 
-if __name__ == "__main__":
+def run_company_property_update():
     data = request_all_properties()
     group = str(input('API name of properties group: '))
     properties = prepare_properties(data, group)
