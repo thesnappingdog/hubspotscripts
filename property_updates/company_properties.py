@@ -1,20 +1,25 @@
 import requests
 from config import Config
 
+# Request all company properties from one account, parse via Group name
+# Change variable group to your own definition
+# Make sure it's correct before running create_all_properties
+
 
 def request_all_properties():
-    return requests.get(Config.COMPANY_PROPS_URL, params=Config.HAPIKEY_SAND).json()
+    return requests.get(Config.COMPANY_PROPS_URL, params=Config.HAUTH_SAND).json()
+
+
+def remove_immutable_keys(i):
+    del i['hubspotDefined'], i['createdAt'], i['updatedAt'], i['createdUserId']
+    return i
 
 
 def parse_properties(data, group):
     properties = []
     for i in data:
         if group in i['groupName']:
-            del i['hubspotDefined']
-            del i['createdAt']
-            del i['updatedAt']
-            del i['createdUserId']
-            properties.append(i)
+            properties.append(remove_immutable_keys(i))
     return properties
 
 
