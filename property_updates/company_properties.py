@@ -15,7 +15,7 @@ def remove_immutable_keys(i):
     return i
 
 
-def parse_properties(data, group):
+def prepare_properties(data, group):
     properties = []
     for i in data:
         if group in i['groupName']:
@@ -35,7 +35,7 @@ def create_all_properties(properties):
 
 if __name__ == "__main__":
     data = request_all_properties()
-    group = 'data_infrastructure'
-    properties = parse_properties(data, group)
+    group = str(input('API name of properties group: '))
+    properties = prepare_properties(data, group)
     create_all_properties(properties)
 
