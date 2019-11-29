@@ -20,19 +20,6 @@ def prepare_form_operations(keyword):
 
 # These keys need to be included into form update body
 
-def list_all_form_constants(forms):
-    form_constants = []
-    for form in forms:
-        form_constants.append({
-            'form_id': form['guid'],
-            'name': form['name'],
-            'submitText': form['submitText'],
-            'redirect': form['redirect'],
-            'notifyRecipients': form['notifyRecipients']
-        })
-    return form_constants
-
-
 def list_single_form_constants(form):
     form_constants = {
         'form_id': form['guid'],
@@ -73,11 +60,13 @@ def bulk_update_forms(forms_to_update, form_template):
         form_body = build_form_update_body(form_template, form_constants)
         print(form_body)
 
-        response = update_single_form(Config.HAPIKEY, form_constants['form_id'], form_body)
-        print(f"{response} for {form_constants['form_id']}")
+        #response = update_single_form(Config.HAPIKEY, form_constants['form_id'], form_body)
+        #print(f"{response} for {form_constants['form_id']}")
 
 
 # Utilities // Find forms you're looking for.
+# Get form by ID is not used, but can be handy if you want to
+# Filter by ID rather than name.
 
 def filter_form_by_name(forms, name):
     forms_to_update = []
@@ -98,7 +87,6 @@ def filter_form_by_id(forms, form_id):
 if __name__ == "__main__":
     keyword = input('TYPE IN KEYWORD OR NAMING CONVENTION FOR YOUR FORMS: ')
     forms_to_update = prepare_form_operations(keyword.upper())
-    form_constants = list_all_form_constants(forms_to_update)
 
     # '04ab40ce-6f56-46d1-91c6-46f5d611c9ca'
     print('##########################################')
