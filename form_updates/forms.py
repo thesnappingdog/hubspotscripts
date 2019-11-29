@@ -5,11 +5,11 @@ from config import Config
 # Groundwork - get all forms, select which ones to update.
 
 def get_all_forms(hapikey):
-    return requests.get(Config.FORM_API_URL, params=Config.generate_auth(hapikey)).json()
+    return requests.get(Config.FORMS_API, params=Config.generate_auth(hapikey)).json()
 
 
 def get_template_form(hapikey, form_id):
-    return requests.get(Config.FORM_API_URL + form_id, params=Config.generate_auth(hapikey)).json()
+    return requests.get(Config.FORMS_API + form_id, params=Config.generate_auth(hapikey)).json()
 
 
 def prepare_form_operations(keyword):
@@ -61,7 +61,7 @@ def build_form_update_body(form_template, form_constant):
 
 def update_single_form(hapikey, form_id, form_body):
     return requests.put(
-        Config.FORM_API_URL + form_id,
+        Config.FORMS_API + form_id,
         json=form_body,
         params=Config.generate_auth(hapikey)
     )

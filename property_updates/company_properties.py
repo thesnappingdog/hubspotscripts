@@ -7,7 +7,7 @@ from config import Config
 
 
 def request_all_properties(hapikey):
-    return requests.get(Config.COMPANY_PROPS_URL, params=Config.generate_auth(hapikey)).json()
+    return requests.get(Config.COMPANY_PROPS_API, params=Config.generate_auth(hapikey)).json()
 
 
 def remove_immutable_keys(i):
@@ -24,7 +24,7 @@ def prepare_properties(data, group):
 
 
 def create_property(hapikey, property):
-    return requests.post(Config.COMPANY_PROPS_URL, json=property, params=Config.generate_auth(hapikey))
+    return requests.post(Config.COMPANY_PROPS_API, json=property, params=Config.generate_auth(hapikey))
 
 
 def create_all_properties(hapikey, properties):

@@ -9,9 +9,9 @@ class Config(object):
     HAPIKEY = os.environ.get('HAPIKEY_MAIN')
     HAPIKEY_SAND = os.environ.get('HAPIKEY_SAND')
 
-    FLOW_BASE_URL = "https://api.hubapi.com/automation/v3/workflows/"
-    COMPANY_PROPS_URL = "https://api.hubapi.com/properties/v1/companies/properties/"
-    FORM_API_URL = "https://api.hubapi.com/forms/v2/forms/"
+    WORKFLOWS_API = "https://api.hubapi.com/automation/v3/workflows/"
+    COMPANY_PROPS_API = "https://api.hubapi.com/properties/v1/companies/properties/"
+    FORMS_API = "https://api.hubapi.com/forms/v2/forms/"
 
     @staticmethod
     def generate_auth(hapikey):
