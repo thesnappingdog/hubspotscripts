@@ -88,7 +88,6 @@ if __name__ == "__main__":
     keyword = input('TYPE IN KEYWORD OR NAMING CONVENTION FOR YOUR FORMS: ')
     forms_to_update = prepare_form_operations(keyword.upper())
 
-    # '04ab40ce-6f56-46d1-91c6-46f5d611c9ca'
     print('##########################################')
     print('GO TO YOUR FORM, COPY FORM ID FROM THE URL')
     print('PASTE YOUR TEMPLATE FORM ID HERE. THIS PART IS CASE SENSITIVE')
