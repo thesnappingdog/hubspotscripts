@@ -20,7 +20,7 @@ def prepare_form_operations(keyword):
 
 # These keys need to be included into form update body
 
-def list_single_form_constants(form):
+def parse_form_constants(form):
     form_constants = {
         'form_id': form['guid'],
         'name': form['name'],
@@ -46,22 +46,21 @@ def build_form_update_body(form_template, form_constant):
 
 # Update bulk or single forms with functions below.
 
+def bulk_update_forms(forms_to_update, form_template):
+    for form in forms_to_update:
+        form_constants = parse_form_constants(form)
+        form_body = build_form_update_body(form_template, form_constants)
+
+        response = update_single_form(Config.HAPIKEY, form_constants['form_id'], form_body)
+        print(f"{response} for {form_constants['form_id']}")
+
+
 def update_single_form(hapikey, form_id, form_body):
     return requests.put(
         Config.FORMS_API + form_id,
         json=form_body,
         params=Config.generate_auth(hapikey)
     )
-
-
-def bulk_update_forms(forms_to_update, form_template):
-    for form in forms_to_update:
-        form_constants = list_single_form_constants(form)
-        form_body = build_form_update_body(form_template, form_constants)
-        print(form_body)
-
-        #response = update_single_form(Config.HAPIKEY, form_constants['form_id'], form_body)
-        #print(f"{response} for {form_constants['form_id']}")
 
 
 # Utilities // Find forms you're looking for.
@@ -84,18 +83,22 @@ def filter_form_by_id(forms, form_id):
     return forms_to_update
 
 
-if __name__ == "__main__":
+def run_form_updates():
     keyword = input('TYPE IN KEYWORD OR NAMING CONVENTION FOR YOUR FORMS: ')
     forms_to_update = prepare_form_operations(keyword.upper())
 
-    print('##########################################')
     print('GO TO YOUR FORM, COPY FORM ID FROM THE URL')
     print('PASTE YOUR TEMPLATE FORM ID HERE. THIS PART IS CASE SENSITIVE')
-    print('##########################################')
-    form_id = input('FORM ID: ')
 
+    form_id = input('FORM ID: ')
     form_template = get_template_form(Config.HAPIKEY, form_id)
+
     bulk_update_forms(forms_to_update, form_template)
+
+
+if __name__ == "__main__":
+    run_form_updates()
+
     
     
     
