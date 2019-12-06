@@ -12,8 +12,8 @@ def get_template_form(hapikey, form_id):
     return requests.get(Config.FORMS_API + form_id, params=Config.generate_auth(hapikey)).json()
 
 
-def prepare_form_operations(keyword):
-    forms = get_all_forms(Config.HAPIKEY)
+def prepare_form_operations(hapikey, keyword):
+    forms = get_all_forms(hapikey)
     forms_to_update = filter_form_by_name(forms, keyword)
     return forms_to_update
 
@@ -67,11 +67,12 @@ def update_single_form(hapikey, form_id, form_body):
 # Get form by ID is not used, but can be handy if you want to
 # Filter by ID rather than name.
 
-def filter_form_by_name(forms, name):
+def filter_form_by_name(forms, keyword):
     forms_to_update = []
     for form in forms:
-        if name.upper() in form['name'].upper():
+        if keyword in form['name'].upper():
             forms_to_update.append(form)
+            print(form['name'])
     return forms_to_update
 
 
@@ -83,17 +84,18 @@ def filter_form_by_id(forms, form_id):
     return forms_to_update
 
 
-def run_form_updates():
+def run_form_updates(hapikey):
     keyword = input('TYPE IN KEYWORD OR NAMING CONVENTION FOR YOUR FORMS: ')
-    forms_to_update = prepare_form_operations(keyword.upper())
+    forms_to_update = prepare_form_operations(hapikey, keyword.upper())
 
     print('GO TO YOUR FORM, COPY FORM ID FROM THE URL')
     print('PASTE YOUR TEMPLATE FORM ID HERE. THIS PART IS CASE SENSITIVE')
 
     form_id = input('FORM ID: ')
-    form_template = get_template_form(Config.HAPIKEY, form_id)
+    form_template = get_template_form(hapikey, form_id)
+    print(f"Is this your template: {form_template['name']} ?")
 
-    bulk_update_forms(forms_to_update, form_template)
+    #bulk_update_forms(forms_to_update, form_template)
 
 
 if __name__ == "__main__":
