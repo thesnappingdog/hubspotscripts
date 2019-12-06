@@ -88,14 +88,19 @@ def run_form_updates(hapikey):
     keyword = input('TYPE IN KEYWORD OR NAMING CONVENTION FOR YOUR FORMS: ')
     forms_to_update = prepare_form_operations(hapikey, keyword.upper())
 
-    print('GO TO YOUR FORM, COPY FORM ID FROM THE URL')
-    print('PASTE YOUR TEMPLATE FORM ID HERE. THIS PART IS CASE SENSITIVE')
+    print('\nTHESE FORMS WILL BE UPDATED. GO TO YOUR FORM, COPY FORM ID FROM THE URL')
+    print('PASTE YOUR TEMPLATE FORM ID HERE. THIS PART IS CASE SENSITIVE\n')
 
     form_id = input('FORM ID: ')
     form_template = get_template_form(hapikey, form_id)
-    print(f"Is this your template: {form_template['name']} ?")
+    print(f"\nIs this your template: {form_template['name']} ?")
 
-    #bulk_update_forms(forms_to_update, form_template)
+    checkpoint = input('Run update? Y/N: ').upper()
+    if checkpoint == 'Y':
+        bulk_update_forms(forms_to_update, form_template)
+        print('OK')
+    else:
+        print('Program terminated.')
 
 
 if __name__ == "__main__":
