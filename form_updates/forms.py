@@ -46,12 +46,12 @@ def build_form_update_body(form_template, form_constant):
 
 # Update bulk or single forms with functions below.
 
-def bulk_update_forms(forms_to_update, form_template):
+def bulk_update_forms(hapikey, forms_to_update, form_template):
     for form in forms_to_update:
         form_constants = parse_form_constants(form)
         form_body = build_form_update_body(form_template, form_constants)
 
-        response = update_single_form(Config.HAPIKEY, form_constants['form_id'], form_body)
+        response = update_single_form(hapikey, form_constants['form_id'], form_body)
         print(f"{response} for {form_constants['form_id']}")
 
 
@@ -97,7 +97,7 @@ def run_form_updates(hapikey):
 
     checkpoint = input('Run update? Y/N: ').upper()
     if checkpoint == 'Y':
-        bulk_update_forms(forms_to_update, form_template)
+        bulk_update_forms(hapikey, forms_to_update, form_template)
         print('OK')
     else:
         print('Program terminated.')
