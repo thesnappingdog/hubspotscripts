@@ -88,9 +88,4 @@ def run_blog_tag_update():
     checkpoint = input('Run update? Y/N: ').upper()
     if checkpoint == 'Y':
         replace_blog_topics(Config.HAPIKEY, blogs_to_update, new_topic_id)
-
     print('OK')
-
-
-if __name__ == "__main__":
-    run_blog_tag_update()

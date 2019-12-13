@@ -98,7 +98,4 @@ def run_form_updates(hapikey):
     checkpoint = input('Run update? Y/N: ').upper()
     if checkpoint == 'Y':
         bulk_update_forms(hapikey, forms_to_update, form_template)
-        print('OK')
-    else:
-        print('Program terminated.')
-
+    print('OK.')
