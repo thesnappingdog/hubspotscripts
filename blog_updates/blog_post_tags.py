@@ -92,5 +92,5 @@ def run_blog_tag_update():
     print('OK')
 
 
-
-
+if __name__ == "__main__":
+    run_blog_tag_update()
