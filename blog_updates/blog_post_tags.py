@@ -50,19 +50,47 @@ def topic_id_operations(hapikey):
 
 
 def blog_filter(blogs, keyword):
-    blogs_f = []
+    blogs_to_update = []
     for blog in blogs:
-        if keyword in blog['name']:
-            blogs_f.append(blog)
-    return blogs
+        if keyword in blog['name'].upper():
+            blogs_to_update.append(blog)
+            print(blog['name'])
+    return blogs_to_update
 
 
-if __name__ == "__main__":
+def choose_topic_id(topic_ids, keyword):
+    for topic in topic_ids:
+        if keyword in topic['name'].upper():
+            print(topic)
+            return topic
+
+
+def replace_blog_topic(hapikey, blog_id, new_topic_id):
+    json_body = {
+        'topic_ids': [new_topic_id['topic_id']]
+    }
+    return requests.put(Config.BLOG_POST_API + blog_id, json=json_body, params=Config.generate_auth(hapikey))
+
+
+def replace_blog_topics(hapikey, blogs_to_update, new_topic_id):
+    for blog in blogs_to_update:
+        response = replace_blog_topic(hapikey, blog['id'], new_topic_id)
+        print(response)
+
+
+def run_blog_tag_update():
     blogs = blog_operations(Config.HAPIKEY)
     topic_ids = topic_id_operations(Config.HAPIKEY)
 
-    blogs_f = blog_filter(blogs, keyword=input('Keyword: '))
-    for blog in blogs_f:
-        print(blog['name'])
+    blogs_to_update = blog_filter(blogs, keyword=input('Blog Keyword: ').upper())
+    new_topic_id = choose_topic_id(topic_ids, keyword=input('Topic Keyword: ').upper())
+
+    checkpoint = input('Run update? Y/N: ').upper()
+    if checkpoint == 'Y':
+        replace_blog_topics(Config.HAPIKEY, blogs_to_update, new_topic_id)
+
+    print('OK')
+
+
 
 

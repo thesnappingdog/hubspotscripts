@@ -102,6 +102,3 @@ def run_form_updates(hapikey):
     else:
         print('Program terminated.')
 
-
-if __name__ == "__main__":
-    run_form_updates()
