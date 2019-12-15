@@ -88,8 +88,7 @@ def run_form_updates(hapikey):
     keyword = input('TYPE IN KEYWORD OR NAMING CONVENTION FOR YOUR FORMS: ')
     forms_to_update = prepare_form_operations(hapikey, keyword.upper())
 
-    print('\nTHESE FORMS WILL BE UPDATED. GO TO YOUR FORM, COPY FORM ID FROM THE URL')
-    print('PASTE YOUR TEMPLATE FORM ID HERE. THIS PART IS CASE SENSITIVE\n')
+    print('\nTHESE FORMS WILL BE UPDATED. GO TO YOUR FORM. PASTE YOUR TEMPLATE FORM ID HERE:\n')
 
     form_id = input('FORM ID: ')
     form_template = get_template_form(hapikey, form_id)
