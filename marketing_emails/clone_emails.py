@@ -2,6 +2,8 @@ import requests
 import pandas as pd
 from config import Config
 
+# Section currently under construction
+
 
 def get_template_email(hapikey, email_id):
     return requests.get(Config.MARKETING_EMAIL_API + email_id, params=Config.generate_auth(hapikey)).json()
