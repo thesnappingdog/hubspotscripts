@@ -14,10 +14,10 @@ def filter_inactive_workflows(workflows):
     return inactive_flows
 
 
-def filter_flows_to_keep(inactive_flows):
+def filter_flows_to_keep(inactive_flows, keyword):
     delete_list = []
     for flow in inactive_flows:
-        if "INFRA" not in flow['name']:
+        if keyword not in flow['name']:
             delete_list.append(flow)
     return delete_list
 
@@ -35,7 +35,7 @@ def run_bulk_delete_workflows():
     workflows = get_all_workflows(Config.HAPIKEY)['workflows']
     inactive_flows = filter_inactive_workflows(workflows)
 
-    delete_list = filter_flows_to_keep(inactive_flows)
+    delete_list = filter_flows_to_keep(inactive_flows, keyword=input('Keyword: '))
 
     bulk_delete_workflows(Config.HAPIKEY, delete_list)
 
