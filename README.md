@@ -13,7 +13,7 @@ New additions:
 - Export blog post tags aka topic IDs to CSV (check script)
 - Export Blog post metadata - id, name, url, topic ids (check script)
 - Update blog post author in bulk (check script)
-- Create a workflow with 15 if branches based on CSV data =>  This one is specifically made for mapping clearbit countries to enumarated country values, but might make this more generic if it turns out to be useful
+- Create a workflow with 15 if branches based on CSV data =>  This one is specifically made for mapping Clearbit country values to enumerated country values, but might make this more generic if it turns out to be useful
 
 
 ## Installation
@@ -47,7 +47,5 @@ Typically that mainly refers to name of source csv.
 
 ## Upcoming scripts
 
-- Bulk create marketing emails with CSV data and a template
-- Bulk create contact workflows with CSV data and a template
 - Feel free to suggest ideas :)
 
