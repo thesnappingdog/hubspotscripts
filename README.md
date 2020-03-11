@@ -39,7 +39,7 @@ To start, run the following:
 
 Select an option and follow the script's instructions
 
-``Some utilities have to be run manually```
+```Some utilities have to be run manually```
 
 Check the specific folders and modify inputs as needed.
 Typically that mainly refers to name of source csv.
