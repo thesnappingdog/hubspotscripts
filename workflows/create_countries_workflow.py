@@ -61,7 +61,7 @@ def generate_actions_body(countries, action):
 
 
 def load_countries(countries):
-    with open('source/flow_source.csv', 'r') as sheet:
+    with open('source/example.csv', 'r') as sheet:
         raw = list(csv.DictReader(sheet))
         for country in raw:
             countries.append({
