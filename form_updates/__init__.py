@@ -1,1 +1,1 @@
-import form_updates.forms
+from form_updates import forms

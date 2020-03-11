@@ -113,5 +113,9 @@ venv.sh
 
 webapp/.DS_Store
 
+/blog_updates/output
 
 
+
+/blog_updates/output/output.csv
+/workflows/source/flow_source.csv

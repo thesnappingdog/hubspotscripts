@@ -18,6 +18,7 @@ class Config(object):
     BLOG_TOPIC_API = "https://api.hubapi.com/blogs/v3/topics/"
     MARKETING_EMAIL_API = "https://api.hubapi.com/marketing-emails/v1/emails/"
     TEMPLATES_API = "http://api.hubapi.com/content/api/v2/templates/"
+    LISTS_API = "https://api.hubapi.com/contacts/v1/lists/"
 
     @staticmethod
     def generate_auth(hapikey):

@@ -17,7 +17,7 @@ def filter_inactive_workflows(workflows):
 def filter_flows_to_keep(inactive_flows, keyword):
     delete_list = []
     for flow in inactive_flows:
-        if keyword not in flow['name']:
+        if keyword not in flow['name'].upper():
             delete_list.append(flow)
     return delete_list
 
@@ -28,14 +28,16 @@ def delete_workflow_request(hapikey, flow_id):
 
 def bulk_delete_workflows(hapikey, deletion_list):
     for flow in deletion_list:
-        print(delete_workflow_request(hapikey, flow['id']))
+        print(delete_workflow_request(hapikey, str(flow['id'])))
 
 
 def run_bulk_delete_workflows():
     workflows = get_all_workflows(Config.HAPIKEY)['workflows']
     inactive_flows = filter_inactive_workflows(workflows)
 
-    delete_list = filter_flows_to_keep(inactive_flows, keyword=input('Keyword: '))
-
+    delete_list = filter_flows_to_keep(inactive_flows, keyword=input('Keyword: ').upper())
     bulk_delete_workflows(Config.HAPIKEY, delete_list)
 
+
+if __name__ == "__main__":
+    run_bulk_delete_workflows()
