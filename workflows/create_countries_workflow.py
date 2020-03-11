@@ -96,7 +96,7 @@ def manual_loop_workflows_set1(hapikey, countries):
 
 def manual_loop_workflows_set2(hapikey, countries):
     action = generate_last_action(countries[15])
-    action_body = generate_actions_body(countries[17:], action)
+    action_body = generate_actions_body(countries[16:], action)
     new_flow_body = build_post_body(action_body, "Workflow 2")
 
     return create_new_workflow(hapikey, new_flow_body)
