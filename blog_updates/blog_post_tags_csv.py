@@ -28,8 +28,3 @@ def loop_blog_topic_updates(data, hapikey):
 if __name__ == "__main__":
     data = load_csv_data([])
     loop_blog_topic_updates(data, Config.HAPIKEY)
-
-
-
-
-
