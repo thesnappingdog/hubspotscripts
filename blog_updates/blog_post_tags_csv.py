@@ -4,7 +4,7 @@ from config import Config
 
 
 def load_csv_data(data):
-    with open('./source/studies.csv', 'r') as sheet:
+    with open('./source/blog_example.csv', 'r') as sheet:
         raw = list(csv.DictReader(sheet))
         for i in raw:
             data.append({
