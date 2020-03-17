@@ -6,15 +6,16 @@ Updated collection:
 - Update Forms in bulk (via menu)
 - Copy company properties from one portal to another (via menu)
 - Delete contact workflows in bulk (check script)
-
-New additions: 
-
 - Update selected blog post Topic IDs (via menu)
 - Export blog post tags aka topic IDs to CSV (check script)
 - Export Blog post metadata - id, name, url, topic ids (check script)
 - Update blog post author in bulk (check script)
 - Create a workflow with 15 if branches based on CSV data =>  This one is specifically made for mapping Clearbit country values to enumerated country values, but might make this more generic if it turns out to be useful
 
+New additions:
+
+- Change Blog post Topic IDs based on CSV data
+- Bulk copy a contact property group to company level
 
 ## Installation
 
