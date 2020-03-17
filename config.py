@@ -12,6 +12,7 @@ class Config(object):
     WORKFLOWS_API = "https://api.hubapi.com/automation/v3/workflows/"
     COMPANY_PROPS_API = "https://api.hubapi.com/properties/v1/companies/properties/"
     CONTACT_PROPS_API = "https://api.hubapi.com/properties/v1/contacts/properties/"
+    CONTACT_PROPS_GROUP_API = "https://api.hubapi.com/properties/v1/contacts/groups/named/"
     CONTACT_PROPS_API_NAMED = CONTACT_PROPS_API + "named/"
     FORMS_API = "https://api.hubapi.com/forms/v2/forms/"
     BLOG_POST_API = "https://api.hubapi.com/content/api/v2/blog-posts/"
