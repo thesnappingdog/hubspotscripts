@@ -26,9 +26,11 @@ Run the following command in root directory:
 Create a `.env` file in the root directory:
 
 ```
-HAPIKEY_MAIN=your_hubspot_api_key
+HAPIKEY_MAIN=paste_your_hubspot_api_key_here
 HAPIKEY_SAND=optional_additional_key_if_needed
 ```
+
+Alternatively, edit .env.example and rename it to ".env" 
 
 ## Usage
 
